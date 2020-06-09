@@ -1,4 +1,4 @@
-module adder8x #(parameter N = 8) (
+module adder9x #(parameter N = 8) (
     clk,
     rst,
     op1,
@@ -9,6 +9,7 @@ module adder8x #(parameter N = 8) (
     op6,
     op7,
     op8,
+    op9,
     res
 );
 
@@ -23,6 +24,7 @@ input [N-1:0] op5;
 input [N-1:0] op6;
 input [N-1:0] op7;
 input [N-1:0] op8;
+input [N-1:0] op9;
 
 output reg  [N-1:0] res;
 
@@ -34,6 +36,7 @@ reg [N-1:0] reg_op5;
 reg [N-1:0] reg_op6;
 reg [N-1:0] reg_op7;
 reg [N-1:0] reg_op8;
+reg [N-1:0] reg_op9;
 
 always @(posedge clk or negedge rst) begin
     if(~rst) begin
@@ -45,6 +48,7 @@ always @(posedge clk or negedge rst) begin
         reg_op6 <= 0;
         reg_op7 <= 0;
         reg_op8 <= 0;
+        reg_op9 <= 0;
         res <= 0;
     end else begin
         reg_op1 <= op1;
@@ -55,6 +59,7 @@ always @(posedge clk or negedge rst) begin
         reg_op6 <= op6;
         reg_op7 <= op7;
         reg_op8 <= op8;
+        reg_op9 <= op9;
         res <= (reg_op1 
                 + reg_op2
                 + reg_op3
@@ -62,7 +67,8 @@ always @(posedge clk or negedge rst) begin
                 + reg_op5
                 + reg_op6
                 + reg_op7
-                + reg_op8) >> 2;
+                + reg_op8
+                + reg_op9) >> 2;
     end
 end
 

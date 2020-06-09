@@ -14,7 +14,7 @@ module stage6(
     output [7:0] a;
     output [15:0] b;
 
-    adder8x #(16) adder8x_a(
+    adder9x #(16) adder9x_a(
         .clk(clk),
         .rst(rst),
         .op1(cp1),
@@ -29,7 +29,7 @@ module stage6(
         .res(a)
     );
 
-    adder8x #(8) adder8x_b(
+    adder9x #(8) adder9x_b(
         .clk(clk),
         .rst(rst),
         .op1(c1),

@@ -37,7 +37,7 @@ always @(posedge clk or negedge rst) begin
         addr_col_r <= 0;
         addr_row_w <= 0;
         addr_row_w <= 0;
-        count = 0;
+        count <= 0;
     end else begin
         if(en) begin
             act <= 0;
@@ -49,12 +49,12 @@ always @(posedge clk or negedge rst) begin
             addr_col_w <= 0;
             working <= 1;
         end else if(working) begin
-            addr_col_r = addr_col_r + 1;
+            addr_col_r <= addr_col_r + 1;
             if(addr_col_r>7) begin
                 addr_col_r <= 0;
                 addr_row_r <= addr_row_r +1;
             end
-            count = count + 1;
+            count <= count + 1;
             if(count == 1) begin
                 act <= 1;
             end else if(count == 9) begin

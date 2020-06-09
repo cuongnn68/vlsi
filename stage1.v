@@ -18,7 +18,7 @@ module stage1(
     input rst;
     input [7:0] p1,p2,p3,p4,p5,p6,p7,p8,p9;
 
-    output reg [7:0] c1,c2,c3,c4,c5,c6,c7,c8,c9;
+    output [7:0] c1,c2,c3,c4,c5,c6,c7,c8,c9;
 
     output reg [7:0] p1_out;
     output reg [7:0] p2_out;
