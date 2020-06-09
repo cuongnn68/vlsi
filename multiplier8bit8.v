@@ -13,8 +13,8 @@ input [7:0] op2;
 
 output reg [7:0] res;
 
-reg [7:0] o1;
-reg [7:0] o2;
+reg [15:0] o1;
+reg [15:0] o2;
 
 always@(posedge clk or negedge rst) begin
     if(~rst) begin

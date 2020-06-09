@@ -12,7 +12,7 @@ module stage2_3_4(
     input [7:0] c1,c2,c3,c4,c5,c6,c7,c8,c9;
 
     output [7:0] c1_out,c2_out,c3_out,c4_out,c5_out,c6_out,c7_out,c8_out,c9_out;
-    output [7:0] p1_out,p2_out,p3_out,p4_out,p5_out,p6_out,p7_out,p8_out,p9_out;
+    output reg [7:0] p1_out,p2_out,p3_out,p4_out,p5_out,p6_out,p7_out,p8_out,p9_out;
 
     always@(posedge clk or negedge rst) begin
         if(~rst) begin
