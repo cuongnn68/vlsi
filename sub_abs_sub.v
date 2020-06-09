@@ -31,7 +31,7 @@ always @(posedge clk or negedge rst) begin
         end else begin
             reg_res <= o2 - o1;
         end
-        res <= (255 -  reg_res);
+        res <= (8'b11111111 -  reg_res);
         // $display("3: %d",res);
     end
 end
