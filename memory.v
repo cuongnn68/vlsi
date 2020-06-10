@@ -65,9 +65,25 @@ always @(posedge clk or rst) begin
         sw_pixel_7 <= 0;
         sw_pixel_8 <= 0;
         sw_pixel_9 <= 0;
+        addr_pixel_1_row_r <= 0;
+        addr_pixel_1_col_r <= 0;
     end else if(rd) begin
         addr_pixel_1_row_r <= addr_row_r;
         addr_pixel_1_col_r <= addr_col_r;
+        // sw_pixel_1 <= n_image[addr_pixel_1_row_r][addr_pixel_1_col_r];
+        // sw_pixel_2 <= n_image[addr_pixel_1_row_r][addr_pixel_1_col_r+1];
+        // sw_pixel_3 <= n_image[addr_pixel_1_row_r][addr_pixel_1_col_r+2];
+        // sw_pixel_4 <= n_image[addr_pixel_1_row_r+1][addr_pixel_1_col_r];
+        // sw_pixel_5 <= n_image[addr_pixel_1_row_r+1][addr_pixel_1_col_r+1];
+        // sw_pixel_6 <= n_image[addr_pixel_1_row_r+1][addr_pixel_1_col_r+2];
+        // sw_pixel_7 <= n_image[addr_pixel_1_row_r+2][addr_pixel_1_col_r];
+        // sw_pixel_8 <= n_image[addr_pixel_1_row_r+2][addr_pixel_1_col_r+1];
+        // sw_pixel_9 <= n_image[addr_pixel_1_row_r+2][addr_pixel_1_col_r+2];
+    end
+end
+
+always@(addr_pixel_1_row_r or addr_pixel_1_col_r) begin
+    if(rst) begin
         sw_pixel_1 <= n_image[addr_pixel_1_row_r][addr_pixel_1_col_r];
         sw_pixel_2 <= n_image[addr_pixel_1_row_r][addr_pixel_1_col_r+1];
         sw_pixel_3 <= n_image[addr_pixel_1_row_r][addr_pixel_1_col_r+2];
@@ -86,8 +102,13 @@ always @(posedge clk or rst) begin
         addr_pixel_1_row_w <= addr_row_w;
         addr_pixel_1_col_w <= addr_col_w;
         reg_cl_pixel <= cl_pixel;
-        f_image[addr_pixel_1_row_w][addr_pixel_1_col_w] <= reg_cl_pixel;
+        // f_image[addr_pixel_1_row_w][addr_pixel_1_col_w] <= reg_cl_pixel;
         end
+end
+
+always@(addr_pixel_1_col_w or reg_cl_pixel) begin
+    if(rst)
+        f_image[addr_pixel_1_row_w][addr_pixel_1_col_w] <= reg_cl_pixel;
 end
 
 //  always @(posedge clk or rst) begin
