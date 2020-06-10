@@ -25,14 +25,20 @@ always @(posedge clk or negedge rst) begin
         // $display("1: %d",o1);
         o2 <= op2;
         // $display("2: %d",o2);
-        // res <= (255 - ((o1>o2)?(o1-o2):(o2-o1)));
-        if (o1>o2) begin
-            reg_res <= o1 - o2;
-        end else begin
-            reg_res <= o2 - o1;
-        end
-        res <= (8'b11111111 -  reg_res);
+        //res <= (255 - ((o1>o2)?(o1-o2):(o2-o1)));
+        // if (o1>o2) begin
+        //     reg_res <= o1 - o2;
+        // end else begin
+        //     reg_res <= o2 - o1;
+        // end
+        // res <= (8'b11111111 -  reg_res);
         // $display("3: %d",res);
+    end
+end
+
+always @(o1 or o2) begin
+    if(rst) begin
+        res <= (255 - ((o1>o2)?(o1-o2):(o2-o1)));
     end
 end
 

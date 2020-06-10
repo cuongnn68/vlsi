@@ -22,6 +22,12 @@ always@(posedge clk or negedge rst) begin
     end else begin
         o1 <= op1;
         o2 <= op2;
+        // res <= (o1*o2);
+    end
+end
+
+always@(o1 or o2) begin
+    if(rst) begin
         res <= (o1*o2);
     end
 end

@@ -19,13 +19,14 @@ module tb_sub_abs_sub();
     end
 
     initial begin
-        forever #20 clk = ~clk;
+        forever #10 clk = ~clk;
     end
 
     initial begin
+        #35
         op1 = 123;
         op2 = 200;
-        #40
+        #10
         $display("res = %b", res);
         // if(res != 8'b01101101) begin
         //     $display(" ket qua sai");

@@ -81,12 +81,13 @@ always @(posedge clk or rst) begin
 end
 
 always @(posedge clk or rst) begin
-    if(rst and wr) begin
+    if(rst) 
+        if(wr) begin
         addr_pixel_1_row_w <= addr_row_w;
         addr_pixel_1_col_w <= addr_col_w;
         reg_cl_pixel <= cl_pixel;
         f_image[addr_pixel_1_row_w][addr_pixel_1_col_w] <= reg_cl_pixel;
-    end
+        end
 end
 
 //  always @(posedge clk or rst) begin

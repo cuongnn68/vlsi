@@ -1,11 +1,11 @@
-module tb_multiplier8bit8 ();
+module tb_multiplier8bit16 ();
     reg clk;
     reg rst;
 
     reg [7:0] op1,op2;
-    wire [7:0] res;
+    wire [15:0] res;
 
-    multiplier8bit8 DUT(
+    multiplier8bit16 DUT(
         .clk(clk),
         .rst(rst),
         .op1(op1),
