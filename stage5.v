@@ -1,8 +1,8 @@
 module stage5(
     clk,
     rst,
-    p1,p2,p3,p4,p5,p6,p7,p8,p9,
     c1,c2,c3,c4,c5,c6,c7,c8,c9,
+    p1,p2,p3,p4,p5,p6,p7,p8,p9,
     c1_out,c2_out,c3_out,c4_out,c5_out,c6_out,c7_out,c8_out,c9_out,
     cp1_out,cp2_out,cp3_out,cp4_out,cp5_out,cp6_out,cp7_out,cp8_out,cp9_out
 );

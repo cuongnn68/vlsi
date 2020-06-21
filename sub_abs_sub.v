@@ -3,11 +3,13 @@ module sub_abs_sub(
     rst,
     op1,
     op2,
-    res
+    res,
+    act
     );
 
 input clk;
 input rst;
+input act;
 input [7:0] op1;
 input [7:0] op2;
 output reg [7:0] res;
@@ -21,10 +23,16 @@ always @(posedge clk or negedge rst) begin
     if(~rst) begin
         {o1,o2,res,reg_res} <= 0;
     end else begin
-        o1 <= op1;
-        // $display("1: %d",o1);
-        o2 <= op2;
-        // $display("2: %d",o2);
+        if(act) begin
+            o1 <= op1;
+            // $display("1: %d",o1);
+            o2 <= op2;
+            // $display("2: %d",o2);
+        end else begin
+            o1 <= 0;
+            o2 <= 0;
+        end
+
         //res <= (255 - ((o1>o2)?(o1-o2):(o2-o1)));
         // if (o1>o2) begin
         //     reg_res <= o1 - o2;

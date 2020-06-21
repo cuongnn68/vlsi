@@ -39,7 +39,7 @@ input [7:0] cl_pixel;
  output reg [7:0] sw_pixel_8;
  output reg [7:0] sw_pixel_9;
 
- reg [7:0] n_image [0:255][0:255];
+ reg [7:0] n_image [0:257][0:257];
  reg [7:0] f_image [0:255][0:255];
 
  reg [7:0] addr_pixel_1_col_r;
@@ -50,10 +50,10 @@ input [7:0] cl_pixel;
 
  reg [7:0] reg_cl_pixel;
 
- reg input_rd;
- reg input_wr;
+//  reg input_rd;
+//  reg input_wr;
 
-always @(posedge clk or rst) begin
+always @(posedge clk or negedge rst) begin
     if (~rst) begin
          // reset
         sw_pixel_1 <= 0;
@@ -68,6 +68,7 @@ always @(posedge clk or rst) begin
         addr_pixel_1_row_r <= 0;
         addr_pixel_1_col_r <= 0;
     end else if(rd) begin
+        // $display("testing 1");
         addr_pixel_1_row_r <= addr_row_r;
         addr_pixel_1_col_r <= addr_col_r;
         // sw_pixel_1 <= n_image[addr_pixel_1_row_r][addr_pixel_1_col_r];
@@ -96,9 +97,12 @@ always@(addr_pixel_1_row_r or addr_pixel_1_col_r) begin
     end
 end
 
-always @(posedge clk or rst) begin
+
+
+always @(posedge clk or negedge rst) begin
     if(rst) 
-        if(wr) begin
+        if(wr) begin 
+            // $display("testing 2");
         addr_pixel_1_row_w <= addr_row_w;
         addr_pixel_1_col_w <= addr_col_w;
         reg_cl_pixel <= cl_pixel;
@@ -106,7 +110,7 @@ always @(posedge clk or rst) begin
         end
 end
 
-always@(addr_pixel_1_col_w or reg_cl_pixel) begin
+always@(addr_pixel_1_row_w or addr_pixel_1_col_w or reg_cl_pixel) begin
     if(rst)
         f_image[addr_pixel_1_row_w][addr_pixel_1_col_w] <= reg_cl_pixel;
 end

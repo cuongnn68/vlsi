@@ -1,6 +1,7 @@
 module tb_sub_abs_sub();
     reg clk,rst;
     reg [7:0] op1,op2;
+    reg act;
     wire [7:0] res;
 
     sub_abs_sub DUT(
